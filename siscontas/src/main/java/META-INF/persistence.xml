@@ -1,0 +1,42 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+
+	<persistence-unit name="controlecontas">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+ 		<class>com.privado.financas.modelo.Conta</class>
+	 	<class>com.privado.financas.modelo.Pagamento</class>
+		<class>com.privado.financas.modelo.Pagador</class>
+		<class>com.privado.financas.modelo.Tag</class>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
+			<property name="hibernate.show_sql" value="false"/>
+			<property name="hibernate.format_sql" value="false"/>
+
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/siscontas"/>
+			<property name="javax.persistence.jdbc.user" value="postgres"/>
+			<property name="javax.persistence.jdbc.password" value="postgres"/>
+
+			<property name="hibernate.search.default.directory_provider" 
+					 value="org.hibernate.search.store.FSDirectoryProvider"/>
+			<property name="hibernate.search.default.indexBase"
+					 value="/home/08117159732/workspace/siscontas-web-jsf2/WebContent/WEB-INF/lucene/indexes"/> 
+			<property name="hibernate.search.analyzer" 
+					 value="org.apache.lucene.analysis.br.BrazilianAnalyzer"/>
+			<property name="hibernate.cache.use_second_level_cache" value="true"/>
+			<property name="hibernate.cache.provider_class" value="org.hibernate.cache.EhCacheProvider"/>	
+
+			<property name="hibernate.connection.provider_class" value="org.hibernate.connection.C3P0ConnectionProvider"/>
+			<property name="hibernate.c3p0.min_size" value="5"/>
+			<property name="hibernate.c3p0.max_size" value="20"/>
+			<property name="hibernate.c3p0.timeout" value="180"/>
+			<property name="hibernate.c3p0.idle_test_period" value="100"/>
+
+		</properties>
+
+	</persistence-unit>
+
+</persistence>

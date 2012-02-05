@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:p="http://primefaces.prime.com.tr/ui"     
+      xmlns:h="http://java.sun.com/jsf/html">
+    <f:view contentType="text/html" />
+    <h:head>
+        <title>Sistema de Finanças</title>
+    </h:head>
+    <h:body>
+		<h2><h:outputText value="Pagamentos" /></h2>
+		   <hr />		   
+		   <h:form>
+		    <h:panelGrid columns="2">
+
+		    	<h:outputText value="Conta"/>
+	        	<h:selectOneMenu value="#{pagamentosBean.contaId}">
+	        		<f:selectItem itemLabel="Escolha a conta" itemValue="" noSelectionOption="true"/>
+	        		<f:selectItems value="#{contasBean.contasAPagar}" var="conta" itemLabel="#{conta.titulo} - #{conta.valor}" itemValue="#{conta.id}" />
+	        	</h:selectOneMenu>
+
+		    	<h:outputText value="Pagante"/>
+	        	<h:selectOneMenu value="#{pagamentosBean.pagadorId}">
+	        		<f:selectItem itemLabel="Escolha o pagante" itemValue="" noSelectionOption="true"/>
+	        		<f:selectItems value="#{pagadoresBean.pagadores}" var="pagador" itemLabel="#{pagador.id} - #{pagador.nome}" itemValue="#{pagador.id}" />
+	        	</h:selectOneMenu>
+
+	        	<h:outputText value="Valor" />
+		    	<h:inputText value="#{pagamentosBean.pagamento.valor}" />
+
+		    	<h:outputText value="Tipo" />
+		    	<h:selectOneMenu value="#{pagamentosBean.pagamento.forma}">
+		    		<f:selectItem itemLabel="Escolha a Forma de Pagamento" itemValue="" noSelectionOption="true"/>
+		    		<f:selectItems value="#{pagamentosBean.formasDePagamento}" />
+		    	</h:selectOneMenu>		   		    
+
+		    	<h:outputText value="Data" />
+		    	<p:calendar pattern="dd/MM/yyyy" value="#{pagamentosBean.pagamento.dataPagamento.time}"/>
+
+		    	<h:commandButton value="Gravar" action="#{pagamentosBean.grava}"/>
+
+		    </h:panelGrid>
+		   </h:form>
+    
+        <h2><h:outputText value="Todos os Pagamentos" /></h2>
+        <hr />
+        <h:dataTable value="#{pagamentosBean.pagamentos}" var="pagamento">
+        	<h:column>
+        		<f:facet name="header">
+        			<h:outputText value="ID" />
+        		</f:facet>
+        		#{pagamento.id}
+        	</h:column>
+        	<h:column>
+        		<f:facet name="header">
+        			<h:outputText value="Conta" />
+        		</f:facet>
+        		#{pagamento.conta.id} - #{pagamento.conta.titulo}
+        	</h:column>
+        	<h:column>
+				<f:facet name="header">
+					<h:outputText value="Valor" />
+				</f:facet>
+				<h:outputText value="#{pagamento.valor}" >
+					<f:convertNumber pattern="R$ #0.00"/>
+				</h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Data de Pagamento" />
+				</f:facet>
+				<h:outputText value="#{pagamento.dataPagamento.time}" >
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:outputText>
+			</h:column>
+        	<h:column>
+        		<f:facet name="header">
+        			<h:outputText value="Tipo" />
+        		</f:facet>
+        		#{pagamento.forma}
+        	</h:column>
+        	<h:column>
+        		<f:facet name="header"><h:outputText value="Ações"/></f:facet>
+        		<h:form>
+        			<h:commandLink value="Remover" action="#{pagamentosBean.remove}">
+						<f:setPropertyActionListener value="#{pagamento}" target="#{pagamentosBean.pagamento}"/>
+        			</h:commandLink>
+        		</h:form>
+        	</h:column>
+        </h:dataTable>  
+    </h:body>
+</html>

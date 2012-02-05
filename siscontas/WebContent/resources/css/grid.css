@@ -1,0 +1,282 @@
+/*
+	Variable Grid System.
+	Learn more ~ http://www.spry-soft.com/grids/
+	Based on 960 Grid System - http://960.gs/
+
+	Licensed under GPL and MIT.
+*/
+
+
+/* Containers
+----------------------------------------------------------------------------------------------------*/
+.container {
+	margin-left: auto;
+	margin-right: auto;
+	width: 900px;
+}
+
+/* Grid >> Global
+----------------------------------------------------------------------------------------------------*/
+
+.grid_1,.grid_2,.grid_3,.grid_4,.grid_5,.grid_6,.grid_7,.grid_8,.grid_9,.grid_10 {
+	display:inline;
+	float: left;
+	position: relative;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+/* Grid >> Children (Alpha ~ First, Omega ~ Last)
+----------------------------------------------------------------------------------------------------*/
+
+.alpha { margin-left: 0; }
+.omega { margin-right: 0; }
+
+/* Grid >> 10 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container .grid_1 {
+	width:80px;
+}
+
+.container .grid_2 {
+	width:170px;
+}
+
+.container .grid_3 {
+	width:260px;
+}
+
+.container .grid_4 {
+	width:350px;
+}
+
+.container .grid_5 {
+	width:440px;
+}
+
+.container .grid_6 {
+	width:530px;
+}
+
+.container .grid_7 {
+	width:620px;
+}
+
+.container .grid_8 {
+	width:710px;
+}
+
+.container .grid_9 {
+	width:800px;
+}
+
+.container .grid_10 {
+	width:890px;
+}
+
+
+
+/* Prefix Extra Space >> 10 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container .prefix_1 {
+	padding-left:90px;
+}
+
+.container .prefix_2 {
+	padding-left:180px;
+}
+
+.container .prefix_3 {
+	padding-left:270px;
+}
+
+.container .prefix_4 {
+	padding-left:360px;
+}
+
+.container .prefix_5 {
+	padding-left:450px;
+}
+
+.container .prefix_6 {
+	padding-left:540px;
+}
+
+.container .prefix_7 {
+	padding-left:630px;
+}
+
+.container .prefix_8 {
+	padding-left:720px;
+}
+
+.container .prefix_9 {
+	padding-left:810px;
+}
+
+
+
+/* Suffix Extra Space >> 10 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container .suffix_1 {
+	padding-right:90px;
+}
+
+.container .suffix_2 {
+	padding-right:180px;
+}
+
+.container .suffix_3 {
+	padding-right:270px;
+}
+
+.container .suffix_4 {
+	padding-right:360px;
+}
+
+.container .suffix_5 {
+	padding-right:450px;
+}
+
+.container .suffix_6 {
+	padding-right:540px;
+}
+
+.container .suffix_7 {
+	padding-right:630px;
+}
+
+.container .suffix_8 {
+	padding-right:720px;
+}
+
+.container .suffix_9 {
+	padding-right:810px;
+}
+
+
+
+/* Push Space >> 10 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container .push_1 {
+	left:90px;
+}
+
+.container .push_2 {
+	left:180px;
+}
+
+.container .push_3 {
+	left:270px;
+}
+
+.container .push_4 {
+	left:360px;
+}
+
+.container .push_5 {
+	left:450px;
+}
+
+.container .push_6 {
+	left:540px;
+}
+
+.container .push_7 {
+	left:630px;
+}
+
+.container .push_8 {
+	left:720px;
+}
+
+.container .push_9 {
+	left:810px;
+}
+
+
+
+/* Pull Space >> 10 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container .pull_1 {
+	left:-90px;
+}
+
+.container .pull_2 {
+	left:-180px;
+}
+
+.container .pull_3 {
+	left:-270px;
+}
+
+.container .pull_4 {
+	left:-360px;
+}
+
+.container .pull_5 {
+	left:-450px;
+}
+
+.container .pull_6 {
+	left:-540px;
+}
+
+.container .pull_7 {
+	left:-630px;
+}
+
+.container .pull_8 {
+	left:-720px;
+}
+
+.container .pull_9 {
+	left:-810px;
+}
+
+
+
+
+/* Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+
+/* http://sonspring.com/journal/clearing-floats */
+
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+/* http://perishablepress.com/press/2008/02/05/lessons-learned-concerning-the-clearfix-css-hack */
+
+.clearfix:after {
+	clear: both;
+	content: ' ';
+	display: block;
+	font-size: 0;
+	line-height: 0;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+* html .clearfix {
+	height: 1%;
+}
+
+.clearfix {
+	display: block;
+}

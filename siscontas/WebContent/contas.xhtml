@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <f:view contentType="text/html" />
+    <h:head>
+        <title>Sistema de Finanças</title>
+    </h:head>
+    <h:body>
+        <h2><h:outputText value="Contas" /></h2>
+        <hr />
+        <h:form>
+        	<f:validateBean>
+	        	<h:messages />
+		        <h:panelGrid columns="2">
+		        	<h:outputText value="Id" rendered="#{contasBean.conta.id!=null}" />
+		        	<h:inputText value="#{contasBean.conta.id}" rendered="#{contasBean.conta.id!=null}"/>
+
+		        	<h:outputText value="Titulo"/>
+		        	<h:inputText value="#{contasBean.conta.titulo}"/>
+
+			    	<h:outputText value="Data Vencimento" />
+			    	<p:calendar pattern="dd/MM/yyyy" value="#{contasBean.conta.dataVencimento.time}"/>
+
+					<h:outputText value="Valor (R$)"/>
+					<h:inputText value="#{contasBean.conta.valor}"/>
+					
+		        	<h:outputText value="Tags(separe por espaço)" />
+			    	<h:inputText value="#{contasBean.tags}" />		    			    	 
+
+		        	<h:commandButton value="Gravar" action="#{contasBean.grava}"/>
+		        </h:panelGrid>
+	        </f:validateBean>
+        </h:form>
+        <h2><h:outputText value="Lista de Contas" /></h2>
+        <hr />
+        <h:dataTable value="#{contasBean.contas}" var="conta"
+        styleClass="dados" rowClasses="impar,par">
+        	<h:column>
+        		<f:facet name="header"><h:outputText value="ID"/></f:facet>
+        		#{conta.id}
+        	</h:column>
+        	<h:column>
+        		<f:facet name="header"><h:outputText value="Titulo"/></f:facet>
+        		#{conta.titulo}
+        	</h:column>
+        	<h:column>
+				<f:facet name="header">
+					<h:outputText value="Data Vencimento"/>
+				</f:facet>
+				<h:outputText value="#{contasBean.conta.dataVencimento.time}" >
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:outputText>
+        	</h:column>
+        	<h:column>
+        		<f:facet name="header"><h:outputText value="Valor (R$)"/></f:facet>
+        		#{conta.valor}
+        	</h:column>
+        	<h:column>
+        		<f:facet name="header">
+        			<h:outputText value="Tags" />
+        		</f:facet>        		
+        		#{conta.tags}
+        	</h:column>
+        	<h:column>
+        		<f:facet name="header"><h:outputText value="Ações"/></f:facet>
+        		<h:form>
+        			<h:commandLink value="Remover" action="#{contasBean.remove}">
+						<f:setPropertyActionListener value="#{conta}" target="#{contasBean.conta}"/>
+        			</h:commandLink> |
+        			<h:commandLink value="Alterar">
+						<f:setPropertyActionListener value="#{conta}" target="#{contasBean.conta}"/>
+        			</h:commandLink>
+        		</h:form>
+        	</h:column>
+        </h:dataTable>
+    </h:body>
+</html>
